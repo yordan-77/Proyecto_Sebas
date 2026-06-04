@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ALARMBOT - Sistema Inteligente Recordatorio de Llaves</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+  <header class="hero scroll-reveal">
+    <div class="hero-content">
+      <span class="badge">IoT Project</span>
+      <h1 class>ALARMBOT</h1>
+      <h2>Sistema Inteligente de Recordatorio de Llaves mediante WhatsApp</h2>
+      <div class="divider"></div>
+      <p class="integrantes">
+        <strong>Integrante del Proyecto: Sebastián Stiven Moreno Guerrero</strong>
+      </p>
+    </div>
+    <div class="hero-image-container">
+      <div class="image-placeholder main-mockup">
+        <img src="images/MAQUETA.jpeg" alt="Maqueta del Proyecto" />
+      </div>
+    </div>
+  </header>
+
+  <section class="section problem-section scroll-reveal">
+    <div class="container grid">
+      <div class="svg-container">
+        <svg viewBox="0 0 200 200" style="width: 100%; max-height: 250px">
+          <rect x="40" y="40" width="120" height="140" rx="10" fill="#333" />
+          <rect x="50" y="50" width="100" height="120" rx="5" fill="#f5f5f5" />
+          <circle cx="130" cy="110" r="8" fill="#111" />
+          <g>
+            <circle cx="100" cy="80" r="10" fill="#007bff" />
+            <path d="M100 90 L100 120 L90 150 M100 120 L110 150 M100 100 L85 115 M100 100 L115 110" stroke="#007bff" stroke-width="4" stroke-linecap="round" />
+          </g>
+          <g>
+            <circle cx="65" cy="75" r="5" fill="none" stroke="#ff3333" stroke-width="2" />
+            <path d="M65 75 L80 75 M75 75 L75 80" stroke="#ff3333" stroke-width="2" />
+          </g>
+        </svg>
+      </div>
+      <div class="text-container">
+        <h2>El Problema</h2>
+        <p style="font-size: 1.2rem; font-style: italic; color: var(--text-muted)">
+          "Muchas personas salen de casa y olvidan retirar sus llaves, lo que puede representar un problema de seguridad."
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section solution-section scroll-reveal bg-light">
+    <div class="container grid">
+      <div class="text-container">
+        <h2>La Solución</h2>
+        <p>
+          El sistema detecta de forma automatizada cuándo las llaves siguen puestas en el llavero al momento de abrir la puerta y envía una alerta en tiempo real.
+        </p>
+      </div>
+      <div class="svg-container">
+        <svg viewBox="0 0 200 200" style="width: 100%; max-height: 250px">
+          <path d="M100 30 L30 90 L50 90 L50 170 L150 170 L150 90 L170 90 Z" fill="none" stroke="#007bff" stroke-width="4" />
+          <rect x="85" y="110" width="30" height="60" fill="#111" />
+          <circle cx="100" cy="75" r="6" fill="#00d1b2" />
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="section components-section scroll-reveal">
+    <div class="container">
+      <div class="center-title">
+        <h2>Componentes Utilizados</h2>
+        <p>Ecosistema físico y digital del proyecto</p>
+      </div>
+      <div class="components-grid">
+        <div class="component-card"><div class="card-icon"><i class="fa-solid fa-microchip"></i></div><h3>ESP8266 NodeMCU</h3></div>
+        <div class="component-card"><div class="card-icon"><i class="fa-solid fa-eye"></i></div><h3>Sensor Infrarrojo</h3></div>
+        <div class="component-card"><div class="card-icon"><i class="fa-solid fa-volume-high"></i></div><h3>Buzzer</h3></div>
+        <div class="component-card"><div class="card-icon"><i class="fa-solid fa-lightbulb"></i></div><h3>Luces LED</h3></div>
+        <div class="component-card"><div class="card-icon"><i class="fa-solid fa-key"></i></div><h3>Llaves</h3></div>
+        <div class="component-card"><div class="card-icon"><i class="fa-solid fa-door-open"></i></div><h3>Puerta</h3></div>
+        <div class="component-card"><div class="card-icon-wa"><i class="fa-brands fa-whatsapp"></i></div><h3>WhatsApp</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section circuit-section scroll-reveal bg-light">
+    <div class="container grid">
+      <div class="circuit-image-area">
+        <div class="image-placeholder circuit-box">
+          <img src="images/ARDUINO.jpeg" alt="Circuito del Proyecto" />
+        </div>
+      </div>
+      <div class="text-container">
+        <h2>Estructura del Circuito</h2>
+        <p>"El ESP8266 recibe la información del sensor infrarrojo y controla la alarma y el envío del mensaje."</p>
+        <svg viewBox="0 0 300 100" class="mini-schematic">
+          <rect x="110" y="25" width="80" height="50" rx="5" fill="#111" stroke="#007bff" stroke-width="2" />
+          <text x="150" y="55" fill="#fff" font-size="10" text-anchor="middle">ESP8266</text>
+          <rect x="10" y="30" width="50" height="40" rx="3" fill="#007bff" />
+          <text x="35" y="53" fill="#fff" font-size="8" text-anchor="middle">SENSOR</text>
+          <circle cx="265" cy="50" r="18" fill="#ff3333" />
+          <text x="265" y="53" fill="#fff" font-size="8" text-anchor="middle">BUZZER</text>
+          <path d="M60 50 L110 50 M190 50 L245 50" stroke="#00d1b2" stroke-width="2" />
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="section timeline-section scroll-reveal">
+    <div class="container">
+      <div class="center-title">
+        <h2>Funcionamiento Paso a Paso</h2>
+        <p>Línea de tiempo interactiva del proceso algorítmico</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item"><div class="timeline-dot success"><i class="fa-solid fa-check"></i></div><div class="timeline-content"><h3>Paso 1</h3><p>Puerta cerrada. Llaves retiradas. Todo normal.</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot alert"><i class="fa-solid fa-door-open"></i></div><div class="timeline-content"><h3>Paso 2</h3><p>La puerta se abre.</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot alert"><i class="fa-solid fa-rss"></i></div><div class="timeline-content"><h3>Paso 3</h3><p>El sensor infrarrojo detecta que las llaves siguen colgadas.</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot"><i class="fa-solid fa-microchip"></i></div><div class="timeline-content"><h3>Paso 4</h3><p>El ESP8266 procesa la información de los sensores.</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot danger"><i class="fa-solid fa-bell"></i></div><div class="timeline-content"><h3>Paso 5</h3><p>Se activa el buzzer emitiendo la alerta sonora.</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot wa"><i class="fa-brands fa-whatsapp"></i></div><div class="timeline-content"><h3>Paso 6</h3><p>ALARMBOT envía un mensaje inmediato de alerta por WhatsApp.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section flowchart-section scroll-reveal bg-light">
+    <div class="container">
+      <div class="center-title"><h2>Diagrama de Flujo</h2></div>
+      <div class="flowchart-vertical">
+        <div class="flow-node">Puerta abierta</div><div class="flow-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+        <div class="flow-node decision">¿Sensor infrarrojo detecta llaves?</div><div class="flow-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+        <div class="flow-node">ESP8266 procesa</div><div class="flow-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+        <div class="flow-node alert">Activación del buzzer</div><div class="flow-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+        <div class="flow-node">ALARMBOT</div><div class="flow-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+        <div class="flow-node whatsapp">Mensaje por WhatsApp</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section gallery-section scroll-reveal">
+    <div class="container">
+      <div class="center-title"><h2>Galería del Proyecto</h2><p>Haz clic sobre cualquier tarjeta para ampliar la imagen</p></div>
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox('images/ENTRADA.jpeg', 'Maqueta del Proyecto')"><div class="image-placeholder"><img src="images/ENTRADA.jpeg" alt="Maqueta del Proyecto" /></div></div>
+        <div class="gallery-item" onclick="openLightbox('images/GALERIA.jpeg', 'Circuito interno')"><div class="image-placeholder"><img src="images/GALERIA.jpeg" alt="Circuito interno" /></div></div>
+        <div class="gallery-item" onclick="openLightbox('images/LED.jpeg', 'Sensor infrarrojo')"><div class="image-placeholder"><img src="images/LED.jpeg" alt="Sensor infrarrojo" /></div></div>
+        <div class="gallery-item" onclick="openLightbox('images/EXPLICACION.jpeg', 'Otras imágenes')"><div class="image-placeholder"><img src="images/EXPLICACION.jpeg" alt="Otras imágenes" /></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section simulation-section scroll-reveal bg-dark text-white">
+    <div class="container">
+      <div class="center-title">
+        <h2 class="text-white">Simulación Automatizada</h2>
+        <p>Demostración interactiva en bucle continuo</p>
+      </div>
+      <div class="sim-dashboard grid">
+        <div class="sim-display">
+          <div class="house-box">
+            <div id="sim-door" class="door-graphic">PUERTA</div>
+            <div id="sim-key" class="key-graphic"><i class="fa-solid fa-key"></i> LLAVES</div>
+            <div id="sim-sensor" class="sensor-indicator">SENSOR IR</div>
+            <div id="sim-buzzer" class="buzzer-indicator"><i class="fa-solid fa-volume-high"></i></div>
+          </div>
+        </div>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-header"><i class="fa-brands fa-whatsapp" style="color: #25d366"></i> WhatsApp</div>
+            <div class="chat-area" id="chat-box"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="section bg-black text-white">
+    <div class="container text-center">
+      <h2>Conclusión</h2>
+      <p style="max-width: 800px; margin: 20px auto; color: #cbd5e1">
+        "ALARMBOT permite reducir el olvido de las llaves mediante un sistema inteligente basado en ESP8266, un sensor infrarrojo y notificaciones automáticas por WhatsApp, proporcionando una solución práctica y de bajo costo."
+      </p>
+      <p style="margin-top: 40px; font-size: 0.85rem; color: var(--text-muted)">
+        &copy; 2026 ALARMBOT - Sistema IoT Prototipo
+      </p>
+    </div>
+  </footer>
+
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="close-btn" onclick="event.stopPropagation(); closeLightbox();">&times;</span>
+    <div class="lightbox-content" id="lightbox-inner" onclick="event.stopPropagation();"></div>
+  </div>
+
+  <script>
+    (function() {
+      // Scroll reveal (animación de entrada)
+      function initScrollReveal() {
+        const elements = document.querySelectorAll(".scroll-reveal");
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        elements.forEach(el => observer.observe(el));
+      }
+
+      // Lightbox con zoom y bloqueo de scroll
+      let currentImageElement = null;
+
+      window.openLightbox = function(src, alt) {
+        const lightbox = document.getElementById("lightbox");
+        const inner = document.getElementById("lightbox-inner");
+        // Crear imagen con clase para zoom
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = alt;
+        img.className = "lightbox-image";
+        img.style.cursor = "zoom-in";
+        // Al hacer clic en la imagen, toggle zoom
+        img.onclick = function(e) {
+          e.stopPropagation();
+          this.classList.toggle("zoomed");
+          // Cambiar cursor según estado
+          if (this.classList.contains("zoomed")) {
+            this.style.cursor = "zoom-out";
+          } else {
+            this.style.cursor = "zoom-in";
+          }
+        };
+        inner.innerHTML = "";
+        inner.appendChild(img);
+        currentImageElement = img;
+        // Bloquear scroll del body
+        document.body.style.overflow = "hidden";
+        lightbox.style.display = "flex";
+        requestAnimationFrame(() => lightbox.classList.add("open"));
+      };
+
+      window.closeLightbox = function() {
+        const lightbox = document.getElementById("lightbox");
+        lightbox.classList.remove("open");
+        // Restaurar scroll del body
+        document.body.style.overflow = "";
+        setTimeout(() => {
+          lightbox.style.display = "none";
+          if (currentImageElement) {
+            currentImageElement.classList.remove("zoomed");
+            currentImageElement = null;
+          }
+        }, 300);
+      };
+
+      function startAutomatedSimulation() {
+        const door = document.getElementById("sim-door");
+        const sensor = document.getElementById("sim-sensor");
+        const buzzer = document.getElementById("sim-buzzer");
+        const chatBox = document.getElementById("chat-box");
+        let step = 0;
+        setInterval(() => {
+          switch(step) {
+            case 0:
+              door.style.transform = "rotateY(0deg)";
+              sensor.style.backgroundColor = "#475569";
+              sensor.innerText = "SENSOR IR";
+              buzzer.style.color = "#475569";
+              buzzer.style.transform = "translateX(-50%) scale(1)";
+              chatBox.innerHTML = "";
+              step = 1;
+              break;
+            case 1:
+              door.style.transform = "rotateY(-80deg)";
+              step = 2;
+              break;
+            case 2:
+              sensor.style.backgroundColor = "var(--danger-red)";
+              sensor.innerText = "⚠️ ¡DETECTADO!";
+              step = 3;
+              break;
+            case 3:
+              buzzer.style.color = "var(--danger-red)";
+              buzzer.style.transform = "translateX(-50%) scale(1.3)";
+              step = 4;
+              break;
+            case 4:
+              buzzer.style.transform = "translateX(-50%) scale(1)";
+              const msg = document.createElement("div");
+              msg.className = "wa-msg";
+              msg.innerHTML = `<strong>⚠️ ALERTA</strong><br>Olvidaste retirar las llaves.<br>Por favor regresa y retíralas.`;
+              chatBox.appendChild(msg);
+              step = 5;
+              break;
+            case 5:
+              step = 0;
+              break;
+            default: step = 0;
+          }
+        }, 2000);
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        initScrollReveal();
+        startAutomatedSimulation();
+      });
+    })();
+  </script>
+</body>
+</html>
