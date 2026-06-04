@@ -675,6 +675,19 @@ body {
   animation: lightboxIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
+.lightbox-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+  cursor: zoom-in;
+}
+
+.lightbox-image.zoomed {
+  transform: scale(2);
+  cursor: zoom-out;
+}
+
 .close-btn {
   position: absolute;
   top: 30px;

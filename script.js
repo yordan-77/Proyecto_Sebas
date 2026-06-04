@@ -1,14 +1,9 @@
-/**
- * PROYECTO: ALARMBOT
- * SCRIPT DE INTERACCIÓN Y SIMULACIÓN EN VIVO
- */
-
 document.addEventListener("DOMContentLoaded", () => {
   initScrollReveal();
   startAutomatedSimulation();
 });
 
-// 1. EFECTO DE APARICIÓN AL HACER SCROLL (FADE IN SUAVE)
+// 1. EFECTO DE APARICIÓN AL HACER SCROLL (CORREGIDO)
 function initScrollReveal() {
   const revealElements = document.querySelectorAll(".scroll-reveal");
 
@@ -18,40 +13,81 @@ function initScrollReveal() {
     revealElements.forEach((element) => {
       const elementTop = element.getBoundingClientRect().top;
       if (elementTop < triggerBottom) {
-        element.add("active");
-        // Alternativa compatible sin classList directo:
-        element.className += " active";
-        // Limpieza para evitar duplicar nombres de clase
-        element.className = element.className.replace(
-          / active active/g,
-          " active",
-        );
+        element.classList.add("active");  // ✅ CORREGIDO
       }
     });
   };
 
   window.addEventListener("scroll", revealOnScroll);
-  revealOnScroll(); // Ejecución inicial
+  revealOnScroll();
 }
 
-// 2. SISTEMA DE GALERÍA (LIGHTBOX INTERACTIVO)
-function openLightbox(element) {
+// 2. SISTEMA DE GALERÍA 
+window.openLightbox = function(src, alt) {
   const lightbox = document.getElementById("lightbox");
-  const lightboxInner = document.getElementById("lightbox-inner");
+  const inner = document.getElementById("lightbox-inner");
 
-  // Clonamos el contenido interno de la tarjeta pulsada (soporta imagen o placeholder)
-  lightboxInner.innerHTML = element.innerHTML;
+  // Crear imagen
+  const img = document.createElement("img");
+  img.src = src;
+  img.alt = alt || "Imagen ampliada";
+  img.className = "lightbox-image";
+  
+  // Tamaño inicial para que entre en pantalla
+  img.style.maxWidth = "100%";
+  img.style.maxHeight = "100%";
+  img.style.width = "auto";
+  img.style.height = "auto";
+  img.style.cursor = "zoom-in";
+
+  // Evento de zoom (toggle)
+  img.onclick = (e) => {
+    e.stopPropagation();
+    img.classList.toggle("zoomed");
+    if (img.classList.contains("zoomed")) {
+      // Al hacer zoom, quitamos límites para que la imagen pueda crecer
+      img.style.maxWidth = "none";
+      img.style.maxHeight = "none";
+      img.style.cursor = "zoom-out";
+    } else {
+      // Restaurar al salir del zoom
+      img.style.maxWidth = "100%";
+      img.style.maxHeight = "100%";
+      img.style.cursor = "zoom-in";
+      // Opcional: devolver scroll al inicio del contenedor
+      const content = document.querySelector(".lightbox-content");
+      if (content) content.scrollTo(0, 0);
+    }
+  };
+
+  // Limpiar y agregar imagen
+  inner.innerHTML = "";
+  inner.appendChild(img);
+
+  // Bloquear scroll del body y mostrar lightbox con animación
+  document.body.style.overflow = "hidden";
   lightbox.style.display = "flex";
-}
+  requestAnimationFrame(() => lightbox.classList.add("open"));
+};
 
-function closeLightbox() {
-  document.getElementById("lightbox").style.display = "none";
-}
+window.closeLightbox = function() {
+  const lightbox = document.getElementById("lightbox");
+  if (!lightbox) return;
+  
+  lightbox.classList.remove("open");
+  document.body.style.overflow = "";  // Restaurar scroll
+  
+  // Limpiar contenido después de la animación
+  setTimeout(() => {
+    lightbox.style.display = "none";
+    const inner = document.getElementById("lightbox-inner");
+    if (inner) inner.innerHTML = "";
+  }, 300);
+};
 
-// 3. SIMULACIÓN DINÁMICA EN BUCLE (DASHBOARD VIRTUAL)
+// 3. SIMULACIÓN DINÁMICA (sin cambios, funciona bien)
 function startAutomatedSimulation() {
   const door = document.getElementById("sim-door");
-  const key = document.getElementById("sim-key");
   const sensor = document.getElementById("sim-sensor");
   const buzzer = document.getElementById("sim-buzzer");
   const chatBox = document.getElementById("chat-box");
@@ -61,50 +97,49 @@ function startAutomatedSimulation() {
   setInterval(() => {
     switch (step) {
       case 0:
-        // Paso 1: Todo normal / Reseteo
         door.style.transform = "rotateY(0deg)";
-        sensor.style.backgroundColor = "#475569";
-        sensor.style.color = "#fff";
-        buzzer.style.color = "#475569";
-        chatBox.innerHTML = ""; // Limpiar chat
+        if (sensor) {
+          sensor.style.backgroundColor = "#475569";
+          sensor.innerText = "SENSOR IR";
+        }
+        if (buzzer) buzzer.style.color = "#475569";
+        if (chatBox) chatBox.innerHTML = "";
         step = 1;
         break;
 
       case 1:
-        // Paso 2: La puerta se abre
-        door.style.transform = "rotateY(-75deg)";
+        if (door) door.style.transform = "rotateY(-75deg)";
         step = 2;
         break;
 
       case 2:
-        // Paso 3 & 4: Sensor detecta y ESP procesa
-        sensor.style.backgroundColor = "#ff3333";
-        sensor.innerText = "¡DETECTADO!";
+        if (sensor) {
+          sensor.style.backgroundColor = "#ff3333";
+          sensor.innerText = "¡DETECTADO!";
+        }
         step = 3;
         break;
 
       case 3:
-        // Paso 5: Alerta acústica activa
-        buzzer.style.color = "#ff3333";
-        // Simulación visual de parpadeo acústico
-        buzzer.style.transform = "translateX(-50%) scale(1.2)";
+        if (buzzer) {
+          buzzer.style.color = "#ff3333";
+          buzzer.style.transform = "translateX(-50%) scale(1.2)";
+        }
         step = 4;
         break;
 
       case 4:
-        // Paso 6: Envío de mensaje automático por WhatsApp
-        buzzer.style.transform = "translateX(-50%) scale(1)";
-
-        const msg = document.createElement("div");
-        msg.className = "wa-msg";
-        msg.innerHTML = `<strong>⚠️ ALERTA ALARMBOT</strong><br>Olvidaste retirar las llaves.<br>Por favor regresa y retíralas.`;
-        chatBox.appendChild(msg);
-
+        if (buzzer) buzzer.style.transform = "translateX(-50%) scale(1)";
+        if (chatBox) {
+          const msg = document.createElement("div");
+          msg.className = "wa-msg";
+          msg.innerHTML = `<strong>⚠️ ALERTA ALARMBOT</strong><br>Olvidaste retirar las llaves.<br>Por favor regresa y retíralas.`;
+          chatBox.appendChild(msg);
+        }
         step = 5;
         break;
 
       case 5:
-        // Pausa en el estado final y reinicio al bucle
         step = 0;
         break;
     }
